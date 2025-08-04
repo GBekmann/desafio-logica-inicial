@@ -1,13 +1,3 @@
-//Desafio Lógica 2 (Calculador de partidas ranqueadas){ DIO }
-// CTRL + : Gera uma anotação
-
-/*Como posso fazer para gerar um laço de repetição no código.
-gerar um disparador de nomes aleatórios dentro de uma matriz e então fazer com
-que ele gere vários results e crie as tabelinhas com os results
-
-Também, posso fazer com que este algoritmo gere um número x de results e escolha
-um valor Y de reesultados para mostrar e por ai vai...
-*/
 
 //Função Ranqueadora
 function ranker(victories = 0, defeats = 0, result = 0, totalMatches = 0) {
@@ -49,6 +39,8 @@ if(result <   0){
   };
 }
 
+
+//Function que sorteará algum nome...
 function randomPlayer() {
   //14 nomes Masculinos e Femininos
 
@@ -92,8 +84,7 @@ function randomPlayer() {
   return name;
 }
 
-const player = randomPlayer();
-
+//Function que chamará as demais funções e fará a execução do código
 function generateRankMessage() {
   const player = randomPlayer();
   const victories = Math.floor(Math.random() * 160);
@@ -102,6 +93,7 @@ function generateRankMessage() {
   const result = victories - defeats;
 
   const stats = ranker(victories, defeats, totalMatches, result); // Chama a função ranker e guarda os dados
+ //Condicional caso Win-Loss for negativo. Mensagem será diferente
   if(stats.result >= 0) {
     console.log(`Congratulations ${player}! Your current ranking is ${stats.ranking};`);
     console.log(`On this season, you've already played ${stats.totalMatches} total matches.`);
@@ -116,10 +108,11 @@ function generateRankMessage() {
   }
 }
 
-//Cinco execuções do código
+//Laço de repetição para executar o código 5 vezes. Informando qual é a execução...
 for(let i= 0; i <= 4; i++){ 
   
   console.log(`Execução ${i}`);
   generateRankMessage();
   console.log('\n');
 }
+
